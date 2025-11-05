@@ -1,0 +1,49 @@
+# Variáveis (Token pego do auth.http)
+@host = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYyMzQyNjQ0LCJleHAiOjE3NjI5NDc0NDR9.HMv9sQuUcq-y2HxkjuHiYzVFCjahuFyF09BPn2Mp6ro
+
+# ID de um Doutor (pegue do doctor.http ou GET /doctors)
+@doctorId = 690b3b34f795f83d754f398f
+
+# ID de um Agendamento (atualize após criar)
+@appointmentId = 672688f4e2f3a4b5c6d7e8f1
+
+# ID de uma Unidade (pegue do health-unit.http ou GET /health-units)
+@healthUnitId = 690b3d4347ac1835355e1849
+
+# ---------------------------------
+# AGENDAMENTOS (CRUD DO PACIENTE)
+# ---------------------------------
+
+### 1. (LOGADO) Criar um novo agendamento
+POST {{host}}/appointments
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "doctorId": "{{doctorId}}",
+  "healthUnitId": "{{healthUnitId}}",
+  "dateTime": "2025-12-10T14:00:00.000Z",
+  "type": "Primeira Consulta"
+}
+
+### 2. (LOGADO) Buscar meus agendamentos
+GET {{host}}/appointments
+Authorization: Bearer {{token}}
+
+### 3. (LOGADO) Buscar um agendamento por ID
+GET {{host}}/appointments/{{appointmentId}}
+Authorization: Bearer {{token}}
+
+### 4. (LOGADO) Atualizar um agendamento (Ex: Cancelar)
+PATCH {{host}}/appointments/{{appointmentId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "status": "Cancelled"
+}
+
+### 5. (LOGADO) Deletar um agendamento
+DELETE {{host}}/appointments/{{appointmentId}}
+Authorization: Bearer {{token}}
