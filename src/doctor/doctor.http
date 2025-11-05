@@ -1,0 +1,54 @@
+# Variáveis (Token pego do auth.http)
+@host = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYyMzQyNjQ0LCJleHAiOjE3NjI5NDc0NDR9.HMv9sQuUcq-y2HxkjuHiYzVFCjahuFyF09BPn2Mp6ro
+
+# ID de um médico (atualize após criar)
+@doctorId = 690b3b34f795f83d754f398f
+
+# ---------------------------------
+# MÉDICOS (CRUD)
+# ---------------------------------
+
+### 1. (PROTEGIDO) Criar um novo médico
+# Requer token de admin/login
+POST {{host}}/doctors
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Dra. Ana Silva",
+  "crm": "12345-SP",
+  "specialty": "Cardiologia",
+  "availability": [
+    {
+      "dayOfWeek": "Segunda-feira",
+      "times": ["09:00", "10:00", "11:00"]
+    },
+    {
+      "dayOfWeek": "Quarta-feira",
+      "times": ["14:00", "15:00", "16:00"]
+    }
+  ]
+}
+
+### 2. (PÚBLICO) Buscar todos os médicos
+GET {{host}}/doctors
+
+### 3. (PÚBLICO) Buscar médicos por especialidade
+GET {{host}}/doctors?specialty=Cardiologia
+
+### 4. (PÚBLICO) Buscar um médico por ID
+GET {{host}}/doctors/{{doctorId}}
+
+### 5. (PROTEGIDO) Atualizar um médico
+PATCH {{host}}/doctors/{{doctorId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Dra. Ana Costa Silva"
+}
+
+### 6. (PROTEGIDO) Deletar um médico
+DELETE {{host}}/doctors/{{doctorId}}
+Authorization: Bearer {{token}}
