@@ -1,0 +1,58 @@
+# ---------------------------------
+# VARIÁVEIS DO AMBIENTE DE TESTE
+# ---------------------------------
+# Host da API
+@host = http://localhost:3000
+
+# Token JWT - Será preenchido pelo auth.http
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYyMzQyNjQ0LCJleHAiOjE3NjI5NDc0NDR9.HMv9sQuUcq-y2HxkjuHiYzVFCjahuFyF09BPn2Mp6ro
+
+# ID de um usuário para testar (mude após criar um)
+@userId = 690a9bf12de455d405c8e1a0
+
+# ---------------------------------
+# USUÁRIOS (CRUD)
+# ---------------------------------
+
+### 1. (PÚBLICO) Criar um novo usuário
+# @name createUser
+POST {{host}}/users
+Content-Type: application/json
+
+{
+  "name": "Usuario de Teste",
+  "email": "teste@exemplo.com",
+  "password": "senha123",
+  "cpf": "12345678901",
+  "cns": "98765432109",
+  "birthDate": "1990-01-15T00:00:00.000Z",
+  "phone": "11999998888"
+}
+
+### 2. (PROTEGIDO) Buscar todos os usuários
+# Requer um token válido (obtido no auth.http)
+GET {{host}}/users
+Authorization: Bearer {{token}}
+
+### 3. (PROTEGIDO) Buscar o perfil do usuário logado
+GET {{host}}/users/profile/me
+Authorization: Bearer {{token}}
+
+### 4. (PROTEGIDO) Buscar um usuário por ID
+# (Lembre-se de atualizar o @userId acima com um ID válido)
+GET {{host}}/users/{{userId}}
+Authorization: Bearer {{token}}
+
+### 5. (PROTEGIDO) Atualizar um usuário por ID
+PATCH {{host}}/users/{{userId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Nome Atualizado",
+  "phone": "11777776666"
+}
+
+### 6. (PROTEGIDO) Deletar um usuário por ID
+DELETE {{host}}/users/{{userId}}
+Authorization: Bearer {{token}}

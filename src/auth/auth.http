@@ -1,0 +1,32 @@
+# ... (variáveis) ...
+@host = http://localhost:3000
+@email = teste-registro@exemplo.com
+@password = senha123
+
+# ---------------------------------
+# AUTENTICAÇÃO
+# ---------------------------------
+
+### 1. (PÚBLICO) Registrar um novo usuário
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Usuario Registrado",
+  "email": "{{email}}",
+  "password": "{{password}}",
+  "cpf": "122222122233301",
+  "cns": "113333122233302",
+  "birthDate": "1995-03-20T00:00:00.000Z",
+  "phone": "1155335554444"
+}
+
+###
+### 2. (PÚBLICO) Fazer Login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
