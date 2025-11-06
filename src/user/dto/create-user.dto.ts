@@ -1,9 +1,10 @@
+import { Type } from 'class-transformer';
 import {
   IsEmail,
   IsNotEmpty,
   IsString,
   MinLength,
-  IsDateString,
+  IsDate,
 } from 'class-validator';
 
 export class CreateUserDto {
@@ -28,10 +29,8 @@ export class CreateUserDto {
   @IsNotEmpty({ message: 'O CNS não pode estar vazio' })
   cns: string;
 
-  @IsDateString(
-    {},
-    { message: 'A data de nascimento deve estar no formato ISO (YYYY-MM-DD)' },
-  )
+  @IsDate({ message: 'A data de nascimento deve ser uma data válida' })
+  @Type(() => Date)
   @IsNotEmpty({ message: 'A data de nascimento não pode estar vazia' })
   birthDate: Date;
 

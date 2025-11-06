@@ -2,7 +2,7 @@
 # VARIÁVEIS DO AMBIENTE DE TESTE
 # ---------------------------------
 # Host da API
-@host = http://localhost:3000
+@host = https://sus-app-api.onrender.com
 
 # Token JWT - Será preenchido pelo auth.http
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYyMzQyNjQ0LCJleHAiOjE3NjI5NDc0NDR9.HMv9sQuUcq-y2HxkjuHiYzVFCjahuFyF09BPn2Mp6ro
@@ -21,11 +21,11 @@ Content-Type: application/json
 
 {
   "name": "Usuario de Teste",
-  "email": "teste@exemplo.com",
+  "email": "teste4444@exemplo.com",
   "password": "senha123",
-  "cpf": "12345678901",
-  "cns": "98765432109",
-  "birthDate": "1990-01-15T00:00:00.000Z",
+  "cpf": "999999999999",
+  "cns": "999999999999",
+  "birthDate": "1990-01-15",
   "phone": "11999998888"
 }
 
