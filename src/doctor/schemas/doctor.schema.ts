@@ -1,19 +1,20 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
+import { HealthUnit } from 'src/health-unit/schemas/health-unit.schema';
 
 export type DoctorDocument = Doctor & Document;
 
-@Schema({ _id: false })
-export class AvailabilitySchedule {
+@Schema()
+export class DateAvailability {
   @Prop({ required: true })
-  dayOfWeek: string;
+  date: string;
 
   @Prop({ type: [String], required: true })
   times: string[];
 }
 
-export const AvailabilityScheduleSchema =
-  SchemaFactory.createForClass(AvailabilitySchedule);
+export const DateAvailabilitySchema =
+  SchemaFactory.createForClass(DateAvailability);
 
 @Schema({ timestamps: true })
 export class Doctor {
@@ -26,8 +27,15 @@ export class Doctor {
   @Prop({ required: true, index: true })
   specialty: string;
 
-  @Prop({ type: [AvailabilityScheduleSchema], default: [] })
-  availability: AvailabilitySchedule[];
+  @Prop({
+    type: Types.ObjectId,
+    ref: HealthUnit.name,
+    required: true,
+  })
+  healthUnit: Types.ObjectId;
+
+  @Prop({ type: [DateAvailabilitySchema], default: [] })
+  availability: DateAvailability[];
 }
 
 export const DoctorSchema = SchemaFactory.createForClass(Doctor);

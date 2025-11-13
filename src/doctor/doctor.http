@@ -1,9 +1,12 @@
 # Variáveis (Token pego do auth.http)
-@host = http://localhost:3000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYyMzQyNjQ0LCJleHAiOjE3NjI5NDc0NDR9.HMv9sQuUcq-y2HxkjuHiYzVFCjahuFyF09BPn2Mp6ro
+@host = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYyOTUxMDYxLCJleHAiOjE3NjM1NTU4NjF9.7r9KRwVyjPJV79fteUjLgejuKAdMTSWvi3Y-wicH9sQ
 
 # ID de um médico (atualize após criar)
 @doctorId = 690b3b34f795f83d754f398f
+
+# ID de uma Unidade (pegue do health-unit.http)
+@healthUnitId = 690b3d4347ac1835355e1849
 
 # ---------------------------------
 # MÉDICOS (CRUD)
@@ -16,17 +19,18 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "Dra. Ana Silva",
-  "crm": "12345-SP",
-  "specialty": "Cardiologia",
+  "name": "Dr. Julia Santana",
+  "crm": "098765443-RJ",
+  "specialty": "Fisioterapia",
+  "healthUnitId": "{{healthUnitId}}",
   "availability": [
     {
-      "dayOfWeek": "Segunda-feira",
-      "times": ["09:00", "10:00", "11:00"]
+      "date": "2025-11-29",
+      "times": ["08:00", "11:00", "12:00"]
     },
     {
-      "dayOfWeek": "Quarta-feira",
-      "times": ["14:00", "15:00", "16:00"]
+      "date": "2025-12-26",
+      "times": ["18:00", "19:00"]
     }
   ]
 }
@@ -50,5 +54,5 @@ Authorization: Bearer {{token}}
 }
 
 ### 6. (PROTEGIDO) Deletar um médico
-DELETE {{host}}/doctors/{{doctorId}}
+DELETE {{host}}/doctors/6913223b1a8a39c1a2d68a92
 Authorization: Bearer {{token}}

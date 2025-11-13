@@ -1,5 +1,5 @@
 # ... (variáveis) ...
-@host = http://localhost:3000
+@host = http://localhost:8080
 @email = teste-registro@exemplo.com
 @password = senha123
 

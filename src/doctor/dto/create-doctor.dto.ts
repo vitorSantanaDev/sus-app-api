@@ -1,10 +1,20 @@
-import { IsArray, IsNotEmpty, IsString, ValidateNested } from 'class-validator';
+import {
+  IsArray,
+  IsISO8601,
+  IsMongoId,
+  IsNotEmpty,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
-class AvailabilityScheduleDto {
-  @IsString()
+class DateAvailabilityDto {
+  @IsISO8601(
+    { strict: true },
+    { message: 'A data deve estar no formato YYYY-MM-DD' },
+  )
   @IsNotEmpty()
-  dayOfWeek: string;
+  date: string;
 
   @IsArray()
   @IsString({ each: true })
@@ -24,8 +34,12 @@ export class CreateDoctorDto {
   @IsNotEmpty()
   specialty: string;
 
+  @IsMongoId({ message: 'O ID da unidade de saúde é inválido' })
+  @IsNotEmpty()
+  healthUnitId: string;
+
   @IsArray()
   @ValidateNested({ each: true })
-  @Type(() => AvailabilityScheduleDto)
-  availability: AvailabilityScheduleDto[];
+  @Type(() => DateAvailabilityDto)
+  availability: DateAvailabilityDto[];
 }

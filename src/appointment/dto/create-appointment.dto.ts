@@ -1,11 +1,13 @@
-import { Type } from 'class-transformer';
-import { IsDate, IsMongoId, IsNotEmpty, IsString } from 'class-validator';
+import { IsMongoId, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateAppointmentDto {
-  @IsDate({ message: 'A data e hora são inválidas' })
-  @Type(() => Date)
+  @IsString()
   @IsNotEmpty()
-  dateTime: Date;
+  time: string;
+
+  @IsMongoId({ message: 'O ID da disponibilidade é inválido' })
+  @IsNotEmpty()
+  availabilityId: string;
 
   @IsString()
   @IsNotEmpty()
