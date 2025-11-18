@@ -1,7 +1,7 @@
 # ... (variáveis) ...
 @host = http://localhost:8080
-@email = teste-registro@exemplo.com
-@password = senha123
+@email = email2vitor@email.com
+@password = 12345678
 
 # ---------------------------------
 # AUTENTICAÇÃO

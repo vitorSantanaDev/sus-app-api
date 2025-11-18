@@ -2,10 +2,10 @@
 # VARIÁVEIS DO AMBIENTE DE TESTE
 # ---------------------------------
 # Host da API
-@host = https://sus-app-api.onrender.com
+@host = http://localhost:8080
 
 # Token JWT - Será preenchido pelo auth.http
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYyMzQyNjQ0LCJleHAiOjE3NjI5NDc0NDR9.HMv9sQuUcq-y2HxkjuHiYzVFCjahuFyF09BPn2Mp6ro
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYzMzExNjgyLCJleHAiOjE3NjM5MTY0ODJ9.6v6hPQadzqgkuAqVkniY6dfnoArhGbMASsVvo9olOB8
 
 # ID de um usuário para testar (mude após criar um)
 @userId = 690a9bf12de455d405c8e1a0

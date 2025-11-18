@@ -1,20 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
+import {
+  DateAvailability,
+  DateAvailabilitySchema,
+} from 'src/common/schemas/date-availability.schema';
 import { HealthUnit } from 'src/health-unit/schemas/health-unit.schema';
 
 export type DoctorDocument = Doctor & Document;
-
-@Schema()
-export class DateAvailability {
-  @Prop({ required: true })
-  date: string;
-
-  @Prop({ type: [String], required: true })
-  times: string[];
-}
-
-export const DateAvailabilitySchema =
-  SchemaFactory.createForClass(DateAvailability);
 
 @Schema({ timestamps: true })
 export class Doctor {

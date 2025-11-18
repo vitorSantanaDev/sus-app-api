@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { DoctorModule } from './doctor/doctor.module';
 import { HealthUnitModule } from './health-unit/health-unit.module';
 import { AppointmentModule } from './appointment/appointment.module';
+import { ExamModule } from './exam/exam.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AppointmentModule } from './appointment/appointment.module';
     DoctorModule,
     HealthUnitModule,
     AppointmentModule,
+    ExamModule,
   ],
   controllers: [],
   providers: [],

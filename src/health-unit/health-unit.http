@@ -1,29 +1,61 @@
 # Variáveis (Token pego do auth.http)
 @host = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYyMzQyNjQ0LCJleHAiOjE3NjI5NDc0NDR9.HMv9sQuUcq-y2HxkjuHiYzVFCjahuFyF09BPn2Mp6ro
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYzMzc1MzI4LCJleHAiOjE3NjM5ODAxMjh9.3JG3HEvsvo8f-0sVN8SmOW-l2PJdKSFv97t6ZLonIiA
 
 # ID de uma unidade (atualize após criar)
-@unitId = 690b3d4347ac1835355e1849
+@unitId = 691bb3959f2193696bd1d2c7
 
 # ---------------------------------
 # UNIDADES DE SAÚDE (CRUD)
 # ---------------------------------
 
-### 1. (PROTEGIDO) Criar uma nova unidade
+### 1. (PROTEGIDO) Criar uma nova unidade (COM EXAMES E AGENDAS)
 POST {{host}}/health-units
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "UBS Centro",
-  "address": "Rua Principal, 123, Centro"
+  "name": "Laboratório de Exames Central",
+  "address": "Rua dos Exames, 789",
+  "availableExams": [
+    {
+      "examId": "blood_test",
+      "availability": [
+        {
+          "date": "2025-12-01",
+          "times": ["07:00", "07:15", "07:30"]
+        }
+      ]
+    },
+    {
+      "examId": "x_ray_chest",
+      "availability": [
+        {
+          "date": "2025-12-01",
+          "times": ["08:00", "08:30"]
+        }
+      ]
+    }
+  ]
 }
+
+### 6. (PÚBLICO) Listar exames e horários VAGOS de uma unidade
+GET {{host}}/health-units/{{unitId}}/exams
+Authorization: Bearer {{token}}
 
 ### 2. (PÚBLICO) Buscar todas as unidades
 GET {{host}}/health-units
+Authorization: Bearer {{token}}
 
 ### 3. (PÚBLICO) Buscar uma unidade por ID
 GET {{host}}/health-units/{{unitId}}
+Authorization: Bearer {{token}}
+
+### 7. (PÚBLICO) Listar apenas unidades com exames
+GET {{host}}/health-units/with-exams
+Authorization: Bearer {{token}}
+
+###
 
 ### 4. (PROTEGIDO) Atualizar uma unidade
 PATCH {{host}}/health-units/{{unitId}}
@@ -35,5 +67,5 @@ Authorization: Bearer {{token}}
 }
 
 ### 5. (PROTEGIDO) Deletar uma unidade
-DELETE {{host}}/health-units/{{unitId}}
+DELETE {{host}}/health-units/691b0a3f4308eca3ff03fd33
 Authorization: Bearer {{token}}

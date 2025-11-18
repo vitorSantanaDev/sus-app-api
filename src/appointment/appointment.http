@@ -1,22 +1,22 @@
 # Variáveis (Token pego do auth.http)
 @host = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlLXJlZ2lzdHJvQGV4ZW1wbG8uY29tIiwic3ViIjoiNjkwYTliMzRkMzgxZmM2ZTA2NWUyYzJmIiwiaWF0IjoxNzYyOTUxMDYxLCJleHAiOjE3NjM1NTU4NjF9.7r9KRwVyjPJV79fteUjLgejuKAdMTSWvi3Y-wicH9sQ
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsMnZpdG9yQGVtYWlsLmNvbSIsInN1YiI6IjY5MWEwNDg1M2IxZTI1YTM2MzVkY2M3YiIsImlhdCI6MTc2MzQ2NTA2NywiZXhwIjoxNzY0MDY5ODY3fQ.M7NM81o3ewWf_OotTGPqNMtzb2DoxPUoVd3a2Vpbvdg
 
 # ID de um Doutor (pegue do doctor.http ou GET /doctors)
-@doctorId = 69147009b11ab7ae619ed8d6
+@doctorId = 6915cc98bf779d5c30aee619
 
 # ID de um Agendamento (atualize após criar)
 @appointmentId = 672688f4e2f3a4b5c6d7e8f1
 
 # ID de uma Unidade (pegue do health-unit.http ou GET /health-units)
-@healthUnitId = 690b3d4347ac1835355e1849
+@healthUnitId = 691bb3b69f2193696bd1d2d8
 
 # 1. PEGAR ID DA DISPONIBILIDADE
 # (Rode 'GET /doctors/{{doctorId}}' e copie um _id da availability)
-@availabilityId = 69147009b11ab7ae619ed8d7
+@availabilityId = 6915cc98bf779d5c30aee61a
 
 # 2. HORA EXATA (deve existir dentro do ID acima)
-@time = 12:00
+@time = 11:00
 
 # ---------------------------------
 # AGENDAMENTOS (CRUD DO PACIENTE)
@@ -53,5 +53,5 @@ Authorization: Bearer {{token}}
 }
 
 ### 5. (LOGADO) Deletar um agendamento
-DELETE {{host}}/appointments/{{appointmentId}}
+DELETE {{host}}/appointments/691c60c7d591f79f3004b512
 Authorization: Bearer {{token}}

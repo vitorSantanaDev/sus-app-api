@@ -19,6 +19,7 @@ export class AppointmentService {
     private doctorService: DoctorService,
     private healthUnitService: HealthUnitService,
   ) {}
+
   async create(
     createAppointmentDto: CreateAppointmentDto,
     userId: string,

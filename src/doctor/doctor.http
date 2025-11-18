@@ -6,7 +6,7 @@
 @doctorId = 690b3b34f795f83d754f398f
 
 # ID de uma Unidade (pegue do health-unit.http)
-@healthUnitId = 690b3d4347ac1835355e1849
+@healthUnitId = 691bb3959f2193696bd1d2c7
 
 # ---------------------------------
 # MÉDICOS (CRUD)
@@ -19,18 +19,18 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "Dr. Julia Santana",
-  "crm": "098765443-RJ",
-  "specialty": "Fisioterapia",
+  "name": "Dr. Vitor Santana",
+  "crm": "99099-RJ",
+  "specialty": "Cardiologia",
   "healthUnitId": "{{healthUnitId}}",
   "availability": [
     {
       "date": "2025-11-29",
-      "times": ["08:00", "11:00", "12:00"]
+      "times": ["06:00", "07:00", "13:00"]
     },
     {
       "date": "2025-12-26",
-      "times": ["18:00", "19:00"]
+      "times": ["18:30", "17:45"]
     }
   ]
 }
@@ -54,5 +54,5 @@ Authorization: Bearer {{token}}
 }
 
 ### 6. (PROTEGIDO) Deletar um médico
-DELETE {{host}}/doctors/6913223b1a8a39c1a2d68a92
+DELETE {{host}}/doctors/6915ccb0bf779d5c30aee627
 Authorization: Bearer {{token}}

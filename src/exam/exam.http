@@ -1,0 +1,47 @@
+# Variáveis (Token pego do auth.http)
+@host = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsMnZpdG9yQGVtYWlsLmNvbSIsInN1YiI6IjY5MWEwNDg1M2IxZTI1YTM2MzVkY2M3YiIsImlhdCI6MTc2MzQ2Nzg3OSwiZXhwIjoxNzY0MDcyNjc5fQ.KqUETDiv_Lu_-oxBR3HT98baQQUC5yzQSBnYZ_YZX9o
+
+# ID de uma Unidade (pegue do health-unit.http ou GET /health-units)
+@healthUnitId = 691bb3959f2193696bd1d2c7
+
+# ID de um Exame (atualize após criar)
+@examId = 691af91205d179db0a2f5183
+
+# ---------------------------------
+# AGENDAMENTOS DE EXAME (CRUD DO PACIENTE)
+# ---------------------------------
+
+
+### 2. (LOGADO) Criar um novo agendamento de exame
+POST {{host}}/exams
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "healthUnitId": "{{healthUnitId}}",
+  "availabilityId": "691bb3959f2193696bd1d2cb",
+  "time": "08:30",
+  "examId": "x_ray_chest"
+}
+
+### 2. (LOGADO) Buscar meus exames
+GET {{host}}/exams
+Authorization: Bearer {{token}}
+
+### 3. (LOGADO) Buscar um exame por ID
+GET {{host}}/exams/{{examId}}
+Authorization: Bearer {{token}}
+
+### 4. (LOGADO) Atualizar um exame (Cancelar)
+PATCH {{host}}/exams/{{examId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "status": "Cancelled"
+}
+
+### 5. (LOGADO) Deletar um exame
+DELETE {{host}}/exams/691c5630d591f79f3004b42c
+Authorization: Bearer {{token}}

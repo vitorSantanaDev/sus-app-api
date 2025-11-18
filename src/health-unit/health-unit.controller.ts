@@ -24,9 +24,19 @@ export class HealthUnitController {
     return this.healthUnitService.create(createHealthUnitDto);
   }
 
+  @Get(':id/exams')
+  getExamsForUnit(@Param('id', ParseMongoIdPipe) id: string) {
+    return this.healthUnitService.getAvailableExams(id);
+  }
+
   @Get()
   findAll() {
     return this.healthUnitService.findAll();
+  }
+
+  @Get('with-exams')
+  findWithExams() {
+    return this.healthUnitService.findWithExams();
   }
 
   @Get(':id')
