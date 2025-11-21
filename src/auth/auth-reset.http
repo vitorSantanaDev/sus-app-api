@@ -1,0 +1,45 @@
+@host = http://localhost:8080
+@email = 111@email.com
+@newPassword = 90909090
+# SUBSTITUA ESTE VALOR MANUALMENTE APÓS RODAR 1.1
+@otpCode = aaa5887
+
+
+# ------------------------------------------------
+# PASSO 1: SOLICITAR CÓDIGO (POST /auth/recover)
+# ------------------------------------------------
+
+### 1.1 - Solicitar o código de recuperação
+POST {{host}}/auth/recover
+Content-Type: application/json
+
+{
+  "email": "{{email}}"
+}
+
+# ------------------------------------------------
+# PASSO 2: VALIDAR CÓDIGO (POST /auth/validate-code)
+# ------------------------------------------------
+
+### 2.1 - Validar o código
+POST {{host}}/auth/validate-code
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "code": "{{otpCode}}"
+}
+
+# ------------------------------------------------
+# PASSO 3: REDEFINIR A SENHA (POST /auth/reset)
+# ------------------------------------------------
+
+### 3.1 - Redefinir a senha usando o Email e o Código validado
+POST {{host}}/auth/reset
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "code": "{{otpCode}}",
+  "newPassword": "{{newPassword}}"
+}
